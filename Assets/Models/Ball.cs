@@ -120,6 +120,7 @@ public class Ball : MonoBehaviour
 
 
     void OnCollisionEnter2D(Collision2D collision){
+        if(!collision.gameObject.tag.Equals("ground")) return;
         physics.isKinematic = true;
         transform.position = defaultBallPosition;
         physics.velocity = Vector2.zero;
