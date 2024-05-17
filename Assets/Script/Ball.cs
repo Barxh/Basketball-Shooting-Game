@@ -10,6 +10,9 @@ public class Ball : MonoBehaviour
     public float force = 100f;
     public int maxTrajectoryIteration = 50;
     public GameObject ballPrediction;
+     public UnityEvent scoredEvent;
+
+ public UnityEvent<Transform> onGroundEvent;
     private Vector2 defaultBallPosition;
     private Vector2 startPosition;
 
@@ -117,17 +120,32 @@ public class Ball : MonoBehaviour
         sceneMainPhysiscs.Simulate(Time.fixedDeltaTime);
     
     }
-
-
-    void OnCollisionEnter2D(Collision2D collision){
-        if(!collision.gameObject.tag.Equals("ground")) return;
-        physics.isKinematic = true;
-        transform.position = defaultBallPosition;
-        physics.velocity = Vector2.zero;
-        physics.angularVelocity = 0f;
+ void OnCollisionEnter2D(Collision2D collision){
+        checkGroundContact(collision);
     }
+
+    void OnTriggerEnter2D(Collider2D collider){
+        ballScorePosition = transform.position.y;
+    }
+  
+  void OnTriggerExit2D(Collider2D collider){
+    if(transform.position.y < ballScorePosition){
+        Debug.Log("Scored");
+        scoredEvent.Invoke();
+    }
+  }
+
+
     private Vector2 getMousePosition(){
 
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
+     private void checkGroundContact(Collision2D collision){
+if(!collision.gameObject.tag.Equals("ground")) return;
+        physics.isKinematic = true;
+    
+        physics.velocity = Vector2.zero;
+        physics.angularVelocity = 0f;
+        onGroundEvent.Invoke(transform);
+}
 }
