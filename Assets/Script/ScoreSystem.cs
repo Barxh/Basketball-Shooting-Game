@@ -5,7 +5,7 @@ using TMPro;
 public class ScoreScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializedField]
+    [SerializeField]
     private TMP_Text scoreText;
     private int score = 0;
 

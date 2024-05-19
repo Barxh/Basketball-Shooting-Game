@@ -5,14 +5,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events; //anja 
 
+
 public class Ball : MonoBehaviour
 {
    
 
     // Start is called before the first frame update
-     [SerializedField] //anja
+     [SerializeField] //anja
     private float force = 100f; //anja
-     [SerializedField]
+     [SerializeField]
     private int maxTrajectoryIteration = 50; //anja
     public GameObject ballPrediction;
      public UnityEvent scoredEvent;

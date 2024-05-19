@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnArea : MonoBehaviour
 {
-    [SerializedField]
+    [SerializeField]
     private Vector2 size; //anja
 private float left;
 private float right;
