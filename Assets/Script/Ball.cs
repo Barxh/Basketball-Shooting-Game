@@ -3,18 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events; //anja 
 
 public class Ball : MonoBehaviour
 {
+   
+
     // Start is called before the first frame update
-    public float force = 100f;
-    public int maxTrajectoryIteration = 50;
+     [SerializedField] //anja
+    private float force = 100f; //anja
+     [SerializedField]
+    private int maxTrajectoryIteration = 50; //anja
     public GameObject ballPrediction;
      public UnityEvent scoredEvent;
 
  public UnityEvent<Transform> onGroundEvent;
     private Vector2 defaultBallPosition;
     private Vector2 startPosition;
+
+private float ballScorePosition; //anja
 
     private Rigidbody2D physics;
     private Scene sceneMain;
