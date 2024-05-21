@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Basketball-Shooting-Game1.sln"
+    "dotnet.defaultSolution": "Basketball-Shooting-Game.sln"
 }

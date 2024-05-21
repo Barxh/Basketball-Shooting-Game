@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1058278480387331292}
   - component: {fileID: 1246833814779449584}
   - component: {fileID: 8004553752142152112}
-  - component: {fileID: 4134372549672378977}
   - component: {fileID: 1735300255790493008}
+  - component: {fileID: 6839524585446652003}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -2086133477
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c61cb8f6140ace447b8683de6e4980f6, type: 3}
@@ -150,21 +150,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.1
---- !u!114 &4134372549672378977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6418533852751451065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1844c81c49649a144931569b3f24de7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 100
-  maxTrajectoryIteration: 50
-  ballPrediction: {fileID: 4486149515075442966, guid: 4dac968f1a9a23e42bc54ddeb6e6ad89, type: 3}
 --- !u!120 &1735300255790493008
 LineRenderer:
   serializedVersion: 2
@@ -204,7 +189,7 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -2086133477
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions: []
@@ -276,3 +261,36 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &6839524585446652003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6418533852751451065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1844c81c49649a144931569b3f24de7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 100
+  maxTrajectoryIteration: 50
+  ballPrediction: {fileID: 4486149515075442966, guid: 4dac968f1a9a23e42bc54ddeb6e6ad89, type: 3}
+  scoredEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
+        m_MethodName: scored
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onGroundEvent:
+    m_PersistentCalls:
+      m_Calls: []
