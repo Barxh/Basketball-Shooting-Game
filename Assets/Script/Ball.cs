@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events; //anja 
 
@@ -16,9 +17,11 @@ public class Ball : MonoBehaviour
      [SerializeField]
     private int maxTrajectoryIteration = 50; //anja
     public GameObject ballPrediction;
-     public UnityEvent scoredEvent;
 
- public UnityEvent<Transform> onGroundEvent;
+    public event UnityAction scoredEvent;
+
+    public event UnityAction onGroundEvent;
+
     private Vector2 defaultBallPosition;
     private Vector2 startPosition;
 
@@ -154,6 +157,6 @@ if(!collision.gameObject.tag.Equals("ground")) return;
     
         physics.velocity = Vector2.zero;
         physics.angularVelocity = 0f;
-        onGroundEvent.Invoke(transform);
+        onGroundEvent.Invoke();
 }
 }

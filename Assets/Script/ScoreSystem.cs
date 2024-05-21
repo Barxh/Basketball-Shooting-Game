@@ -13,6 +13,11 @@ public class ScoreScript : MonoBehaviour
     private SpawnArea spawnArea;
     [SerializeField]
     private TMP_Text scoreText;
+
+    private GameObject currentBall;
+
+
+
     private int score = 0;
 
     public void scored(){
@@ -21,8 +26,42 @@ public class ScoreScript : MonoBehaviour
     }
 
     public void startGame(){
-        GameObject ball=Instantiate(ballPrefab);
-        spawnArea.spawnBall(ball.transform);
+
+        spawnBall();
+
     }
+
+    private void respawnBall(){
+        destroyBall();
+        spawnBall();
+
+    }
+
+    private void spawnBall(){
+        currentBall=Instantiate(ballPrefab);
+        Ball ballComand=currentBall.GetComponent<Ball>();
+
+        
+        ballComand.scoredEvent+=scored;
+        ballComand.onGroundEvent+=respawnBall;
+
+        spawnArea.spawnBall(currentBall.transform);
+
+    }
+
+    private void destroyBall(){
+        if(!currentBall) return;
+
+        Ball ballComand=currentBall.GetComponent<Ball>();
+
+        
+        ballComand.scoredEvent-=scored;
+        ballComand.onGroundEvent-=respawnBall;
+
+        Destroy(currentBall);
+        currentBall=null;
+
+    }
+
 
 }
