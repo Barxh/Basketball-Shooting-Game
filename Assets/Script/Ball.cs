@@ -41,13 +41,19 @@ public class Ball : MonoBehaviour
 
 
     void Awake(){
-        scoreSystem=GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>();
-        scenePrediction=scoreSystem.getScenePrediction();
-        scenePredictionPhysics=scoreSystem.getScenePredictionPhysics();
+       
+       initGameSystem();
         physics = GetComponent<Rigidbody2D>();
 
 
     }
+
+    
+
+
+
+
+
         void Start()
     {
 
@@ -130,10 +136,19 @@ public class Ball : MonoBehaviour
   
   void OnTriggerExit2D(Collider2D collider){
     if(transform.position.y < ballScorePosition){
-        Debug.Log("Scored");
+       // Debug.Log("Scored");
         scoredEvent.Invoke();
     }
   }
+
+
+    private void initGameSystem(){
+         scoreSystem=GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>();
+        scenePrediction=scoreSystem.getScenePrediction();
+        scenePredictionPhysics=scoreSystem.getScenePredictionPhysics();
+
+
+    }
 
 
     private Vector2 getMousePosition(){
