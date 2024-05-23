@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1246833814779449584}
   - component: {fileID: 8004553752142152112}
   - component: {fileID: 1735300255790493008}
-  - component: {fileID: 6839524585446652003}
+  - component: {fileID: -6426458745462671087}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -261,7 +261,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &6839524585446652003
+--- !u!114 &-6426458745462671087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,21 +276,3 @@ MonoBehaviour:
   force: 100
   maxTrajectoryIteration: 50
   ballPrediction: {fileID: 4486149515075442966, guid: 4dac968f1a9a23e42bc54ddeb6e6ad89, type: 3}
-  scoredEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
-        m_MethodName: scored
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onGroundEvent:
-    m_PersistentCalls:
-      m_Calls: []
