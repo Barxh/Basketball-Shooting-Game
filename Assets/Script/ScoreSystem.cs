@@ -19,18 +19,13 @@ public class ScoreSystem: MonoBehaviour
 
     private GameObject currentBall;
 
-    private Scene sceneMain;
-    private PhysicsScene2D sceneMainPhysics;
-
-   private Scene scenePrediction; //provjeri da li se ovo brise
-    private PhysicsScene2D scenePredictionPhysics;
-
+    private SceneSystem sceneSystem=new SceneSystem();
 
 
     private int score = 0;
 
     private void Awake(){
-          Physics2D.simulationMode = SimulationMode2D.Script;
+         sceneSystem.init();
     }
 
     public void scored(){
@@ -39,20 +34,19 @@ public class ScoreSystem: MonoBehaviour
     }
 
     public void startGame(){
-      
         
-        createMainScene();
-        createScenePrediction();
+        
+       
 
         spawnBall();
 
     }
 
     public Scene getScenePrediction(){
-        return scenePrediction;
+        return sceneSystem.getScenePrediction();
     }
      public PhysicsScene2D getScenePredictionPhysics(){
-        return scenePredictionPhysics;
+        return sceneSystem.getScenePredictionPhysics();
     }
 
 
@@ -88,24 +82,12 @@ public class ScoreSystem: MonoBehaviour
 
     }
 
-    private void createScenePrediction()
-    {
-        CreateSceneParameters sceneParameters = new CreateSceneParameters(LocalPhysicsMode.Physics2D);
-
-
-        scenePrediction = SceneManager.CreateScene("PredictionScene", sceneParameters);
-        scenePredictionPhysics = scenePrediction.GetPhysicsScene2D();
-    }
-
-    private void createMainScene()
-    {
-        sceneMain = SceneManager.CreateScene("MainScene");
-        sceneMainPhysics = sceneMain.GetPhysicsScene2D();
-    }
+ 
 
     void FixedUpdate(){
-        if(!sceneMainPhysics.IsValid()) return;
-        sceneMainPhysics.Simulate(Time.fixedDeltaTime);
+
+        sceneSystem.FixedUpdate();
+       
     
     }
 
