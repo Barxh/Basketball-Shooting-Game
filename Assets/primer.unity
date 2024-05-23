@@ -708,7 +708,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.643689
+  orthographic size: 6.120779
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1694,9 +1694,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5448155458863324772, guid: b406c97fcaf39924d87c241db6f4870e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448155458863324772, guid: b406c97fcaf39924d87c241db6f4870e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448155458863324772, guid: b406c97fcaf39924d87c241db6f4870e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448155458863324772, guid: b406c97fcaf39924d87c241db6f4870e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5664962674186091989, guid: b406c97fcaf39924d87c241db6f4870e, type: 3}
       propertyPath: m_Name
       value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736726982599125784, guid: b406c97fcaf39924d87c241db6f4870e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736726982599125784, guid: b406c97fcaf39924d87c241db6f4870e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736726982599125784, guid: b406c97fcaf39924d87c241db6f4870e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736726982599125784, guid: b406c97fcaf39924d87c241db6f4870e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
