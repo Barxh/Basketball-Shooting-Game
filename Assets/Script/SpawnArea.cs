@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class SpawnArea : MonoBehaviour
 {
@@ -19,6 +21,7 @@ ballTransform.position = new Vector3(x,y);
 }
 
     private void OnDrawGizmos(){
+
         Gizmos.color=Color.red;
          left= transform.position.x - size.x /2;
          right= transform.position.x + size.x /2;

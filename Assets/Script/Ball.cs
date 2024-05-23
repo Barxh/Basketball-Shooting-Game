@@ -1,6 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -10,6 +10,7 @@ using UnityEngine.Events; //anja
 public class Ball : MonoBehaviour
 {
    
+
 
     // Start is called before the first frame update
      [SerializeField] //anja
@@ -25,16 +26,24 @@ public class Ball : MonoBehaviour
     private Vector2 defaultBallPosition;
     private Vector2 startPosition;
 
-private float ballScorePosition; //anja
+
 
     private Rigidbody2D physics;
-    private Scene sceneMain;
-    private PhysicsScene2D sceneMainPhysiscs;
 
-    private Scene scenePrediction;
-     private PhysicsScene2D scenePredictionPhysiscs;
+   
+
+    private float ballScorePosition; //anja
+
+
+    private ScoreSystem scoreSystem;
+    private Scene scenePrediction; //dodato sa mjesta gdje se ono brise
+     private PhysicsScene2D scenePredictionPhysics;
+
+
     void Awake(){
-
+        scoreSystem=GameObject.Find("ScoreSystem").GetComponent<ScoreSystem>();
+        scenePrediction=scoreSystem.getScenePrediction();
+        scenePredictionPhysics=scoreSystem.getScenePredictionPhysics();
         physics = GetComponent<Rigidbody2D>();
 
 
@@ -42,31 +51,15 @@ private float ballScorePosition; //anja
         void Start()
     {
 
-        Physics2D.simulationMode = SimulationMode2D.Script;
+        
 
         physics.isKinematic = true;
-        defaultBallPosition = physics.position;
+        defaultBallPosition = transform.position;
 
-        createMainScene();
-        createScenePrediction();
 
     }
 
-    private void createScenePrediction()
-    {
-        CreateSceneParameters sceneParameters = new CreateSceneParameters(LocalPhysicsMode.Physics2D);
-
-
-        scenePrediction = SceneManager.CreateScene("PredictionScene", sceneParameters);
-        scenePredictionPhysiscs = scenePrediction.GetPhysicsScene2D();
-    }
-
-    private void createMainScene()
-    {
-        sceneMain = SceneManager.CreateScene("MainScene");
-        sceneMainPhysiscs = sceneMain.GetPhysicsScene2D();
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -103,7 +96,7 @@ private float ballScorePosition; //anja
 
         for (int i = 0; i < maxTrajectoryIteration; i++)
         {
-            scenePredictionPhysiscs.Simulate(Time.fixedDeltaTime);
+            scenePredictionPhysics.Simulate(Time.fixedDeltaTime);
             ballLine.SetPosition(i, new Vector3(newBallPrediction.transform.position.x, newBallPrediction.transform.position.y, 0));
         }
     }
@@ -126,11 +119,7 @@ private float ballScorePosition; //anja
         return startPosition - endPosition;
     }
 
-    void FixedUpdate(){
-        if(!sceneMainPhysiscs.IsValid()) return;
-        sceneMainPhysiscs.Simulate(Time.fixedDeltaTime);
     
-    }
  void OnCollisionEnter2D(Collision2D collision){
         checkGroundContact(collision);
     }
@@ -151,12 +140,12 @@ private float ballScorePosition; //anja
 
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
+
+
      private void checkGroundContact(Collision2D collision){
-if(!collision.gameObject.tag.Equals("ground")) return;
-        physics.isKinematic = true;
-    
-        physics.velocity = Vector2.zero;
-        physics.angularVelocity = 0f;
+
+        if(!collision.gameObject.tag.Equals("ground")) return;
+       
         onGroundEvent.Invoke();
 }
 }
