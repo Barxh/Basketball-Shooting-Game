@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 193874489}
   m_Layer: 0
   m_Name: court
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -708,7 +708,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.120779
+  orthographic size: 6.19481
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 726589874}
   m_Layer: 0
   m_Name: tabla
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -982,7 +982,7 @@ GameObject:
   - component: {fileID: 840442606}
   m_Layer: 0
   m_Name: kos
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

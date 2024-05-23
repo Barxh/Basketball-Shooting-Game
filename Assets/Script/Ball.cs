@@ -23,11 +23,10 @@ public class Ball : MonoBehaviour
 
     public event UnityAction onGroundEvent;
 
+
+
     private Vector2 defaultBallPosition;
     private Vector2 startPosition;
-
-
-
     private Rigidbody2D physics;
 
    
@@ -37,21 +36,19 @@ public class Ball : MonoBehaviour
 
     private ScoreSystem scoreSystem;
     private Scene scenePrediction; //dodato sa mjesta gdje se ono brise
-     private PhysicsScene2D scenePredictionPhysics;
+    private PhysicsScene2D scenePredictionPhysics;
 
+
+    private AudioSource ballBounceSound;
 
     void Awake(){
        
        initGameSystem();
         physics = GetComponent<Rigidbody2D>();
+        ballBounceSound=GetComponent<AudioSource>();
 
 
     }
-
-    
-
-
-
 
 
         void Start()
@@ -127,7 +124,9 @@ public class Ball : MonoBehaviour
 
     
  void OnCollisionEnter2D(Collision2D collision){
+
         checkGroundContact(collision);
+        checkBallCollisionSoundCondition(collision);
     }
 
     void OnTriggerEnter2D(Collider2D collider){
@@ -160,7 +159,22 @@ public class Ball : MonoBehaviour
      private void checkGroundContact(Collision2D collision){
 
         if(!collision.gameObject.tag.Equals("ground")) return;
-       
-        onGroundEvent.Invoke();
+
+     // ballBounceSound.Play();
+      onGroundEvent.Invoke();
 }
+
+
+    private void checkBallCollisionSoundCondition(Collision2D collision){
+         if(!collision.gameObject.tag.Equals("ground") && !collision.gameObject.tag.Equals("ground")) return; //ne znam da li valja ovo sa tabla
+
+
+        ballBounceSound.Play();
+
+    }
+
+
+
+
+
 }
